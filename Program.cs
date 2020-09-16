@@ -80,7 +80,7 @@ namespace CarGame
                             batmobile.Brake(accelerationFactor);
                             break;
                         case Info:
-                            batmobile.ShowSpeed();
+                            Console.WriteLine($"{batmobile.Name} is going {batmobile.Speed * 10} miles per hour");
                             break;
                         case Quit:
                             playing = false;
@@ -122,45 +122,41 @@ namespace CarGame
     class Car
     {
         private int maxSpeed = 80;
-        public int speed = 0;
+        public int _speed = 0;
         public int Speed
         {
-            get { return speed; }
+            get { return _speed; }
             private set
             {
                 if (value < maxSpeed)
                 {
-                    speed = value;
+                    _speed = value;
                 }
                 else
                 {
-                    speed = maxSpeed;
+                    _speed = maxSpeed;
                 }
                 
             }
         }
-        private readonly string name;
+
+        public string Name { get; }
 
         public Car(string carName)
         {
-            name = carName;
+            Name = carName;
         }
 
         public void Accelerate(int amount)
         {
             Speed += amount;  // Speed = Speed + amount;
-            ShowSpeed();
         }
 
         public void Brake(int speedReduction)
         {
             Speed = (Speed < speedReduction) ? 0 : Speed - speedReduction;
-            ShowSpeed();
         }
 
-        public void ShowSpeed()
-        {
-            Console.WriteLine($"{name} is going {Speed * 10} miles per hour.");
-        }
+        
     }
 }
