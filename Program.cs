@@ -121,11 +121,23 @@ namespace CarGame
 
     class Car
     {
+        private int maxSpeed = 80;
         public int speed = 0;
         public int Speed
         {
             get { return speed; }
-            private set { Speed = value; }
+            private set
+            {
+                if (value < maxSpeed)
+                {
+                    speed = value;
+                }
+                else
+                {
+                    speed = maxSpeed;
+                }
+                
+            }
         }
         private readonly string name;
 
