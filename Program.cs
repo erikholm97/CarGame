@@ -74,7 +74,7 @@ namespace CarGame
                             playing = Drive(batmobile.Speed, ref carPosition, DirectionRight);
                             break;
                         case Accelerate:
-                            batmobile.Speed = (accelerationFactor);
+                            batmobile.Accelerate(accelerationFactor);
                             break;
                         case Brake:
                             batmobile.Brake(accelerationFactor);
@@ -125,7 +125,7 @@ namespace CarGame
         public int Speed
         {
             get { return speed; }
-            set { Speed = value; }
+            private set { Speed = value; }
         }
         private readonly string name;
 
